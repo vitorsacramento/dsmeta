@@ -1,5 +1,7 @@
 package com.devsuperior.dsmeta.controllers;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,6 +33,11 @@ public class SaleController {
 	@GetMapping("/{id}/notification")
 	public void notifySms(@PathVariable Long id) {
 		smsService.sendSms(id);
+	}
+	
+	@GetMapping("/{id}")
+	public Optional<Sale> findById(@PathVariable Long id) {
+		return service.findById(id);
 	}
 	
 	
